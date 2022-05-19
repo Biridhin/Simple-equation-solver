@@ -35,3 +35,5 @@ def solve_equation(expression):
     
 
 expression = ''.join(input('Digite a expressão: ').split())
+solution = solve_equation(expression)
+print(f"A solução para {' '.join([c for c in expression])} é {get_terms(expression)[0]} = {solution}")
