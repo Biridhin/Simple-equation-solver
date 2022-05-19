@@ -13,5 +13,25 @@ def get_terms(expression):
                    else (B, A, C, operation) if str(B).isalpha() \
                    else (C, A, B, operation)
 
+def solve_equation(expression):
+    operate = {"+": lambda n1, n2: n1 + n2,
+               "-": lambda n1, n2: n1 - n2,
+               "*": lambda n1, n2: n1 * n2,
+               "/": lambda n1, n2: n1 / n2}
+    oposite = {"+": "-",
+               "-": "+",
+               "*": "/",
+               "/": "*"}
+    unknown, X, Y, operation = get_terms(expression)
+    
+    if unknown == "A":
+        return operate[operation](X, Y)
+    elif unknown == "B":
+        return operate[oposite[operation]](X, Y)
+    else:
+        if operation == "/":
+            return operate[operation](Y, X)
+        return operate[oposite[operation]](X, Y)
+    
 
 expression = ''.join(input('Digite a expressão: ').split())
